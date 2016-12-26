@@ -1,0 +1,24 @@
+{
+  "name": "vue-cookies",
+  "version": "1.0.0",
+  "description": "vue cookie",
+  "main": "vue-cookies.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmp-cc/vue-cookies.git"
+  },
+  "keywords":[
+    "javascirpt",
+    "vue",
+    "cookie"
+  ],
+  "author": "cmp-cc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cmp-cc/vue-cookies/issues"
+  },
+  "homepage": "https://github.com/cmp-cc/vue-cookies#readme"
+}

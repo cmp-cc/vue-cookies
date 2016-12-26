@@ -14,6 +14,8 @@
     </p>
     <p v-else>
       Welcome again : {{ welcomeValue }}
+      <button @click="deleteUser">{{deleteUserText}}</button>
+      {{deleteUserState}}
     </p>
 
   </div>
@@ -24,7 +26,9 @@
     el:'#v-main',
     data: function() {
       return {
-        welcomeValue: this.$cookies.get('username')
+        welcomeValue: this.$cookies.get('username'),
+        deleteUserText : '移除当前用户Cookie',
+        deleteUserState:''
       }
     },
     methods: {
@@ -32,6 +36,17 @@
         this.welcomeValue = event.target.value;
 
         this.$cookies.set('username', this.welcomeValue)
+      },
+      deleteUser: function(){
+        if(this.$cookies.remove('username')){
+          this.deleteUserState = '√'
+        }else {
+          this.deleteUserState = '×'
+        }
+
+        setTimeout(function(){
+          location.reload()
+        }, 0.5 * 1000)
       }
     }
   })
