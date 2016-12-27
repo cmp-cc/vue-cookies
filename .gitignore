@@ -41,3 +41,4 @@ index.html
 .DS_Store
 .idea
 version
+npm-debug.log
