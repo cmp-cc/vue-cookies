@@ -4,7 +4,7 @@ A simple Vue.js plugin for handling browser cookies
 
 ## Installation
 
-### Direct download
+### Browser
 ```
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="../libs/vue-cookies.js"></script>
@@ -12,8 +12,6 @@ A simple Vue.js plugin for handling browser cookies
 ### Package Managers
 ```
 npm install vue-cookies --save
-
-
 
 // require
 var Vue = require('vue')
