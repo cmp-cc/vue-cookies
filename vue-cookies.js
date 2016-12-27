@@ -38,11 +38,11 @@
       return true;
     },
     remove: function (key, path, domain) {
-      if (!key || !this.hasItem(key)) { return false; }
+      if (!key || !this.isKey(key)) { return false; }
       document.cookie = encodeURIComponent(key) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ( domain ? "; domain=" + domain : "") + ( path ? "; path=" + path : "");
       return true;
     },
-    hasItem: function (key) {
+    isKey: function (key) {
       return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(key).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
     },
     keys: /* optional method: you can safely remove it! */ function () {
