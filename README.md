@@ -41,7 +41,7 @@ this.$cookie.remove(name[, path],domain)
 ```
 this.cookie.isKey(keyName)
 ```
-* Get All `cookie name`(KeyName)
+* Get All `cookie name`
 ```
 this.cookie.keys()  // return a array
 ```
