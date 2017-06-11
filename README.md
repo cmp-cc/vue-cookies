@@ -87,9 +87,11 @@ this.$cookies.set("default_unit_second","input_value",60 * 60 * 24); // 1 month 
 | min         |  minute     |
 | s           |  second     |
 
-**Unit Names Ignore Case**<br/>
-**not support the combination**<br/>
-**not support the double value**<br/>
+**Unit Names Ignore Case**
+
+**not support the combination**
+
+**not support the double value**
 
 ```javascript
 this.$cookies.set("token","GH1.1.1689020474.1484362313","60s");  // 60 second after, expire
