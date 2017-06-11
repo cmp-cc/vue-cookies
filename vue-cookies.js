@@ -1,5 +1,5 @@
 /**
- * Vue Cookies v1.0
+ * Vue Cookies v1.5.0
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
@@ -22,7 +22,7 @@
       if (!key) {
         throw new Error("cookie name is not find in frist argument")
       }
-      var _expires = "";
+      var _expires = "; max-age=86400"; // default expire time for 1 day
       if (expireTimes) {
         switch (expireTimes.constructor) {
           case Number:
