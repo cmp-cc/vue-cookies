@@ -28,7 +28,7 @@
       if (expireTimes) {
         switch (expireTimes.constructor) {
           case Number:
-            if(expireTimes === Infinity || expireTimes < 0) _expires = "; expires=Fri, 31 Dec 9999 23:59:59 GMT"
+            if(expireTimes === Infinity || expireTimes === -1) _expires = "; expires=Fri, 31 Dec 9999 23:59:59 GMT"
             else _expires = "; max-age=" + expireTimes;
             break;
           case String:
