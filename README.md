@@ -145,6 +145,9 @@ this.$cookies.remove("token");
 // get all cookie key names, line shows
 this.$cookies.keys().join("\n"); 
 
+// vue-cookies global
+[this | Vue | window].$cookies.[method] 
+
 ```
 
 
@@ -155,10 +158,11 @@ this.$cookies.keys().join("\n");
 ## explain
 **vue-cookies no dependencies, It can exist independently, Friendly to vuejs**
 ```
-window.$cookies.get()
-window.$cookies.set()
-....
-
+window.$cookies.get
+window.$cookies.set
+window.$cookies.isKey
+window.$cookies.remove
+window.$cookies.keys
 ```
 
 ## License
