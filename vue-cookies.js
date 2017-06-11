@@ -1,5 +1,5 @@
 /**
- * Vue Cookies v1.5.0
+ * Vue Cookies v1.5.3
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
@@ -20,13 +20,16 @@
     },
     set: function(key, value, expireTimes, path, domain, secure) {
       if (!key) {
-        throw new Error("cookie name is not find in frist argument")
+        throw new Error("cookie name is not find in first argument")
+      }else if(/^(?:expires|max\-age|path|domain|secure)$/i.test(key)){
+        throw new Error("cookie key name illegality ,Cannot be set to ['expires','max-age','path','domain','secure']\t","current key name: "+key);
       }
       var _expires = "; max-age=86400"; // default expire time for 1 day
       if (expireTimes) {
         switch (expireTimes.constructor) {
           case Number:
-            _expires = expireTimes === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + expireTimes;
+            if(expireTimes === Infinity || expireTimes < 0) _expires = "; expires=Fri, 31 Dec 9999 23:59:59 GMT"
+            else _expires = "; max-age=" + expireTimes;
             break;
           case String:
             if (/^(?:\d{1,}(y|m|d|h|min|s))$/i.test(expireTimes)) {
@@ -53,6 +56,7 @@
             break;
         }
       }
+      console.log(_expires)
       document.cookie = encodeURIComponent(key) + "=" + encodeURIComponent(value) + _expires + (domain ? "; domain=" + domain : "") + (path ? "; path=" + path : "") + (secure ? "; secure" : "");
       return this;
     },
