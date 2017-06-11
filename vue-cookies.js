@@ -13,8 +13,6 @@
       Vue.prototype.$cookies = this
       Vue.cookies = this
     },
-    // ===
-
     get: function(key) {
       return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(key).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
     },
@@ -49,7 +47,6 @@
             } else {
               _expires = "; expires=" + expireTimes;
             }
-
             break;
           case Date:
             _expires = "; expires=" + expireTimes.toUTCString();
