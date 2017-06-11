@@ -50,9 +50,7 @@ this.$cookies.keys()  // return a array
 
 #### set expire times
 **Suppose the current time is : Sat, 11 Mar 2017 12:25:57 GMT**
-
 **Following equivalence: 1 day after, expire**
-
 **Support chaining sets together**
 ``` javascript
  // default expire time: 1 day
@@ -65,7 +63,7 @@ this.$cookies.set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX")
         // input a Date, + 1day
         .set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX", new Date(2017, 03, 12))
         // input a date string, + 1day
-        .set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX", "Sat, 13 Mar 2017 12:25:57 GMT ")
+        .set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX", "Sat, 13 Mar 2017 12:25:57 GMT")
 ```
 #### set expire times, input number type
 
@@ -105,10 +103,18 @@ this.$cookies.set("token","GH1.1.1689020474.1484362313","3y");  // 3 year after,
 this.$cookies.set("token","GH1.1.1689020474.1484362313", "Sat, 13 Mar 2017 12:25:57 GMT ");
 ```
 
+#### set expire support date
+```
+var date = new Date;
+date.setDate(date.getDate() + 1);
+this.$cookies.set("token","GH1.1.1689020474.1484362313", date);
+```
+
 #### set never expire
 ```
 this.$cookies.set("token","GH1.1.1689020474.1484362313", Infinity);  // never expire
-this.$cookies.set("token","GH1.1.1689020474.1484362313", -1); // never expire , only -1,Other negative Numbers are invalid
+// never expire , only -1,Other negative Numbers are invalid
+this.$cookies.set("token","GH1.1.1689020474.1484362313", -1); 
 ```
 #### set other arguments
 ```
@@ -143,10 +149,14 @@ this.$cookies.keys().join("\n");
 
 
 ## explain
-**vue-cookies no dependencies, It can exist independently, amity of vuejs**
+**vue-cookies no dependencies, It can exist independently, Friendly to vuejs**
 ```
-window.$cookies.get
-window.$cookies.set
+window.$cookies.get()
+window.$cookies.set()
 ....
 
 ```
+
+## License
+[MIT](http://opensource.org/licenses/MIT)
+Copyright (c) 2016-present, cmp-cc
