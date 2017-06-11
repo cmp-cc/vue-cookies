@@ -50,7 +50,9 @@ this.$cookies.keys()  // return a array
 
 #### set expire times
 **Suppose the current time is : Sat, 11 Mar 2017 12:25:57 GMT**
+
 **Following equivalence: 1 day after, expire**
+
 **Support chaining sets together**
 ``` javascript
  // default expire time: 1 day
