@@ -56,7 +56,6 @@
             break;
         }
       }
-      console.log(_expires)
       document.cookie = encodeURIComponent(key) + "=" + encodeURIComponent(value) + _expires + (domain ? "; domain=" + domain : "") + (path ? "; path=" + path : "") + (secure ? "; secure" : "");
       return this;
     },
