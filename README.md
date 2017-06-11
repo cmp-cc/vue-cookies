@@ -49,17 +49,22 @@ this.$cookies.keys()  // return a array
 ## Example Usage
 
 #### set expire times
+**Suppose the current time is : Sat, 11 Mar 2017 12:25:57 GMT**
+**Following equivalence: 1 day after, expire**
+**Support chaining sets together**
 ``` javascript
-// Suppose the current time is : Sat, 11 Mar 2017 12:25:57 GMT 
-// Following equivalence: 1 day after, expire
-this.$cookies.set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX");      // default expire time: 1 day
-this.$cookies.set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX","1d"); // number + d
-this.$cookies.set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX","1D"); // ignore case
-this.$cookies.set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX",60 * 60 * 24); // Base of second
-this.$cookies.set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX", new Date(2017, 03, 12)); // input a Date, + 1day
-this.$cookies.set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX", "Sat, 13 Mar 2017 12:25:57 GMT "); // input a date string, + 1day
+ // default expire time: 1 day
+this.$cookies.set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX")
+        // number + d , ignore case
+        .set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX","1d")
+        .set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX","1D")
+        // Base of second
+        .set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX",60 * 60 * 24)
+        // input a Date, + 1day
+        .set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX", new Date(2017, 03, 12))
+        // input a date string, + 1day
+        .set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX", "Sat, 13 Mar 2017 12:25:57 GMT ")
 ```
-
 #### set expire times, input number type
 
 ```
