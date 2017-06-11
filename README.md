@@ -107,8 +107,10 @@ this.$cookies.set("token","GH1.1.1689020474.1484362313", -1); // never expire , 
 ```
 // set path
 this.$cookies.set("use_path_argument","value","1d","/app");  
+
 // set domain
 this.$cookies.set("use_path_argument","value",null, null, "domain.com");   // default 1 day after,expire
+
 // set secure
 this.$cookies.set("use_path_argument","value",null, null, null,true);
 ```
@@ -130,11 +132,11 @@ this.$cookies.keys().join("\n");
 
 
 ## Warning
-** $cookies key names Cannot be set to ['expires','max-age','path','domain','secure']**
+**$cookies key names Cannot be set to ['expires','max-age','path','domain','secure']**
 
 
 ## explain
-**vue-cookies no dependencies, It can exist independently, amity of vuejs **
+**vue-cookies no dependencies, It can exist independently, amity of vuejs**
 ```
 window.$cookies.get
 window.$cookies.set
