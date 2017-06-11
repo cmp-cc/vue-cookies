@@ -35,13 +35,13 @@ this.$cookies.get(keyName)
 ```
 * Remove a cookie
 ```
-this.$cookie.remove(name[, path],domain)
+this.$cookies.remove(name[, path],domain)
 ```
 * Exist a `cookie name`
 ```
-this.cookie.isKey(keyName)
+this.$cookies.isKey(keyName)
 ```
 * Get All `cookie name`
 ```
-this.cookie.keys()  // return a array
+this.$cookies.keys()  // return a array
 ```
