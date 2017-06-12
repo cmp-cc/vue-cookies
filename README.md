@@ -35,7 +35,7 @@ this.$cookies.get(keyName)
 ```
 * Remove a cookie
 ```
-this.$cookies.remove(name[, path],domain)
+this.$cookies.remove(name[, path [, domain]])
 ```
 * Exist a `cookie name`
 ```
@@ -73,7 +73,7 @@ this.$cookies.set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX")
 this.$cookies.set("default_unit_second","input_value",1);            // 1 second after, expire
 this.$cookies.set("default_unit_second","input_value",60 + 30);      // 1 minute 30 second after, expire
 this.$cookies.set("default_unit_second","input_value",60 * 60 * 12); // 12 hour after, expire
-this.$cookies.set("default_unit_second","input_value",60 * 60 * 24); // 1 month after, expire
+this.$cookies.set("default_unit_second","input_value",60 * 60 * 24 * 30); // 1 month after, expire
 
 ```
 
