@@ -27,7 +27,7 @@ Vue.use(VueCookies)
 ## Api
 * Set a cookie
 ```
-this.$cookies.set(name, value[, expireTimes[, path[, domain[, secure]]]])
+this.$cookies.set(keyName, value[, expireTimes[, path[, domain[, secure]]]])
 ```
 * Get a cookie
 ```
@@ -35,7 +35,7 @@ this.$cookies.get(keyName)
 ```
 * Remove a cookie
 ```
-this.$cookies.remove(name[, path [, domain]])
+this.$cookies.remove(keyName [, path [, domain]])
 ```
 * Exist a `cookie name`
 ```
