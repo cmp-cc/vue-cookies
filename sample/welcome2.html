@@ -22,6 +22,14 @@
 </body>
 <script>
 
+  var conf = {
+      callback:true
+  }
+
+  function a(event){
+      console.log(event)
+  }
+
   new Vue({
     el:'#v-main',
     data: function() {
@@ -36,6 +44,8 @@
         this.welcomeValue = event.target.value;
 
         this.$cookies.set('username', this.welcomeValue)
+
+          conf.callback && a(event);
       },
       deleteUser: function(){
         if(this.$cookies.remove('username')){
