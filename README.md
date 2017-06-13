@@ -74,7 +74,6 @@ this.$cookies.set("default_unit_second","input_value",1);            // 1 second
 this.$cookies.set("default_unit_second","input_value",60 + 30);      // 1 minute 30 second after, expire
 this.$cookies.set("default_unit_second","input_value",60 * 60 * 12); // 12 hour after, expire
 this.$cookies.set("default_unit_second","input_value",60 * 60 * 24 * 30); // 1 month after, expire
-
 ```
 
 
@@ -104,6 +103,7 @@ this.$cookies.set("token","GH1.1.1689020474.1484362313","16h");  // 16 hour afte
 this.$cookies.set("token","GH1.1.1689020474.1484362313","3y");  // 3 year after, expire
 
 // input date string 
+this.$cookies.set('token',"GH1.1.1689020474.1484362313", new Date(2017,03,13).toUTCString());
 this.$cookies.set("token","GH1.1.1689020474.1484362313", "Sat, 13 Mar 2017 12:25:57 GMT ");
 ```
 
