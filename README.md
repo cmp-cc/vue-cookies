@@ -35,7 +35,7 @@ this.$cookies.get(keyName)       // return value
 ```
 * Remove a cookie
 ```
-this.$cookies.remove(keyName [, path [, domain]])   // return  false or true , warning： next version return this； isKey(keyname) return true/false,please
+this.$cookies.remove(keyName [, path [, domain]])   // return  false or true , warning： next version return this； use isKey(keyname) return true/false,please
 ```
 * Exist a `cookie name`
 ```
