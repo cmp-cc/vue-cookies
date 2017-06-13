@@ -27,19 +27,19 @@ Vue.use(VueCookies)
 ## Api
 * Set a cookie
 ```
-this.$cookies.set(keyName, value[, expireTimes[, path[, domain[, secure]]]])
+this.$cookies.set(keyName, value[, expireTimes[, path[, domain[, secure]]]])   //return this
 ```
 * Get a cookie
 ```
-this.$cookies.get(keyName)
+this.$cookies.get(keyName)       // return value                             
 ```
 * Remove a cookie
 ```
-this.$cookies.remove(keyName [, path [, domain]])
+this.$cookies.remove(keyName [, path [, domain]])   // return  false or true , warning： next version return this； isKey(keyname) return true/false,please
 ```
 * Exist a `cookie name`
 ```
-this.$cookies.isKey(keyName)
+this.$cookies.isKey(keyName)        // return false or true
 ```
 * Get All `cookie name`
 ```
