@@ -1,5 +1,5 @@
 /**
- * Vue Cookies v1.5.3
+ * Vue Cookies v1.5.4
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
@@ -84,6 +84,10 @@
   } else if (window.Vue) {
     Vue.use(VueCookies);
   }
-  window.$cookies = VueCookies;
-  
+  // vue-cookies can exist independently,no dependencies library
+  if(typeof window!=="undefined"){
+        window.$cookies = VueCookies;
+    }
+
+
 })()
