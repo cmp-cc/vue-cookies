@@ -75,6 +75,12 @@ this.$cookies.set("default_unit_second","input_value",60 + 30);      // 1 minute
 this.$cookies.set("default_unit_second","input_value",60 * 60 * 12); // 12 hour after, expire
 this.$cookies.set("default_unit_second","input_value",60 * 60 * 24 * 30); // 1 month after, expire
 ```
+#### set expire times - end of browser session
+
+```
+this.$cookies.set("default_unit_second","input_value","0");          // end of session - use string!
+```
+
 
 
 #### set expire times , input string type
