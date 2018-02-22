@@ -66,7 +66,8 @@
     isKey: function(key) {
       return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(key).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
     },
-    keys: /* optional method: you can safely remove it! */ function() {
+    keys:  function() {
+      if(!document.cookie) return [];
       var _keys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
       for (var _index = 0; _index < _keys.length; _index++) {
         _keys[_index] = decodeURIComponent(_keys[_index]);
