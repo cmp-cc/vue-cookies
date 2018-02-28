@@ -36,7 +36,7 @@
               // get capture type group , to lower case
               switch (expireTimes.replace(/^(?:\d{1,})(y|m|d|h|min|s)$/i, "$1").toLowerCase()) {
                 // Frequency sorting
-                case 'm':  _expires = "; max-age=" + +_expireTime * 259200; break; // 60 * 60 * 24 * 30
+                case 'm':  _expires = "; max-age=" + +_expireTime * 2592000; break; // 60 * 60 * 24 * 30
                 case 'd':  _expires = "; max-age=" + +_expireTime * 86400; break; // 60 * 60 * 24
                 case 'h': _expires = "; max-age=" + +_expireTime * 3600; break; // 60 * 60
                 case 'min':  _expires = "; max-age=" + +_expireTime * 60; break; // 60
