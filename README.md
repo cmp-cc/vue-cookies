@@ -26,7 +26,7 @@ Vue.use(VueCookies)
 
 ## Api
 
-**syntax format: [this | Vue | window].$cookies.[method]**
+syntax format: **[this | Vue | window].$cookies.[method]**
 
 * Set global config
 ```
