@@ -25,6 +25,12 @@ Vue.use(VueCookies)
 ```
 
 ## Api
+
+* Set global config
+```
+this.$cookies.config(expireTimes[,path])  // default: expireTimes = 1d , path=/
+```
+
 * Set a cookie
 ```
 this.$cookies.set(keyName, value[, expireTimes[, path[, domain[, secure]]]])   //return this
@@ -35,7 +41,7 @@ this.$cookies.get(keyName)       // return value
 ```
 * Remove a cookie
 ```
-this.$cookies.remove(keyName [, path [, domain]])   // return  false or true , warning： next version return this； use isKey(keyname) return true/false,please
+this.$cookies.remove(keyName [, path [, domain]])   // return this
 ```
 * Exist a `cookie name`
 ```
@@ -47,6 +53,28 @@ this.$cookies.keys()  // return a array
 ```
 
 ## Example Usage
+
+#### set global config
+```
+// 30 day after, expire
+this.$cookies.config('30d')
+
+this.$cookies.config(new Date(2019,03,13).toUTCString())
+
+// 30 day after, expire, '' current path , browser default
+this.$cookies.config(60 * 60 * 24 * 30,'');
+
+// window object
+window.$cookies.config('30d')
+```
+
+#### support json object
+```
+var user = { id:1, name:'Journal',session:'25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX' };
+this.$cookies.set('user',user);
+// print user name
+console.log(this.$cookies.get('user').name)
+```
 
 #### set expire times
 **Suppose the current time is : Sat, 11 Mar 2017 12:25:57 GMT**
