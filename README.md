@@ -26,26 +26,28 @@ Vue.use(VueCookies)
 
 ## Api
 
+**syntax format: [this | Vue | window].$cookies.[method]**
+
 * Set global config
 ```
-this.$cookies.config(expireTimes[,path])  // default: expireTimes = 1d , path=/
+$cookies.config(expireTimes[,path])  // default: expireTimes = 1d , path=/
 ```
 
 * Set a cookie
 ```
-this.$cookies.set(keyName, value[, expireTimes[, path[, domain[, secure]]]])   //return this
+$cookies.set(keyName, value[, expireTimes[, path[, domain[, secure]]]])   //return this
 ```
 * Get a cookie
 ```
-this.$cookies.get(keyName)       // return value                             
+$cookies.get(keyName)  // return value                             
 ```
 * Remove a cookie
 ```
-this.$cookies.remove(keyName [, path [, domain]])   // return this
+$cookies.remove(keyName [, path [, domain]])  // return this
 ```
 * Exist a `cookie name`
 ```
-this.$cookies.isKey(keyName)        // return false or true
+$cookies.isKey(keyName)  // return false or true
 ```
 * Get All `cookie name`
 ```
