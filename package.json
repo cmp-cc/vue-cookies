@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/cmp-cc/vue-cookies/issues"
   },
-  "homepage": "https://github.com/cmp-cc/vue-cookies#readme"
+  "homepage": "https://github.com/cmp-cc/vue-cookies#readme",
+  "typings": "types/index.d.ts"
 }
