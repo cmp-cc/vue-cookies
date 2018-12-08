@@ -1,5 +1,5 @@
     /**
- * Vue Cookies v1.5.10
+ * Vue Cookies v1.5.11
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
@@ -32,7 +32,7 @@
         get: function(key) {
             var value = decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(key).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null
 
-            if(value && value.substring(0,1) === "{" && value.substring(value.length-1,value.length === "}")) {
+            if(value && value.substring(0,1) === "{" && value.substring(value.length-1,value.length) === "}") {
                 try {
                     value = JSON.parse(value)
                 }catch (e) {
