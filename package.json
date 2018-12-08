@@ -1,6 +1,6 @@
 {
   "name": "vue-cookies",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "description": "A simple Vue.js plugin for handling browser cookies",
   "main": "vue-cookies.js",
   "scripts": {
