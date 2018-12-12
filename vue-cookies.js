@@ -1,5 +1,5 @@
     /**
- * Vue Cookies v1.5.11
+ * Vue Cookies v1.5.12
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
@@ -23,9 +23,7 @@
             if(expireTimes) {
                 defaultConfig.expires = expireTimes;
             }
-            if(path === '') {
-                defaultConfig.path = '';
-            }else {
+            if(path) {
                 defaultConfig.path = '; path=' + path;
             }
         },

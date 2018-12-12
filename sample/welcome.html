@@ -34,15 +34,11 @@
     methods: {
       username : function(event){
         this.welcomeValue = event.target.value;
-
         this.$cookies.set('username', this.welcomeValue)
       },
       deleteUser: function(){
-        if(this.$cookies.remove('username')){
-          this.deleteUserState = '√'
-        }else {
-          this.deleteUserState = '×'
-        }
+        this.$cookies.remove('username');
+        this.deleteUserState = '√'
 
         setTimeout(function(){
           location.reload()
