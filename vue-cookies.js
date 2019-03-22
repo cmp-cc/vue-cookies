@@ -46,44 +46,39 @@
                 throw new Error("cookie key name illegality ,Cannot be set to ['expires','max-age','path','domain','secure']\t","current key name: "+key);
             }
             // support json object
-            if(value && value.constructor === Object ) {
+            if(value && value.constructor === Object) {
                 value = JSON.stringify(value);
             }
-            var _expires = "; max-age=86400"; // temp value, default expire time for 1 day
-            expireTimes = expireTimes || defaultConfig.expires;
-            if (expireTimes) {
-                
-                if(expireTimes == "0")
-                    _expires = "";
-                else {
-                    switch (expireTimes.constructor) {
-                        case Number:
-                            if(expireTimes === Infinity || expireTimes === -1) _expires = "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-                            else _expires = "; max-age=" + expireTimes;
-                            break;
-                        case String:
-                            if (/^(?:\d{1,}(y|m|d|h|min|s))$/i.test(expireTimes)) {
-                                // get capture number group
-                                var _expireTime = expireTimes.replace(/^(\d{1,})(?:y|m|d|h|min|s)$/i, "$1");
-                                // get capture type group , to lower case
-                                switch (expireTimes.replace(/^(?:\d{1,})(y|m|d|h|min|s)$/i, "$1").toLowerCase()) {
-                                    // Frequency sorting
-                                    case 'm':  _expires = "; max-age=" + +_expireTime * 2592000; break; // 60 * 60 * 24 * 30
-                                    case 'd':  _expires = "; max-age=" + +_expireTime * 86400; break; // 60 * 60 * 24
-                                    case 'h': _expires = "; max-age=" + +_expireTime * 3600; break; // 60 * 60
-                                    case 'min':  _expires = "; max-age=" + +_expireTime * 60; break; // 60
-                                    case 's': _expires = "; max-age=" + _expireTime; break;
-                                    case 'y': _expires = "; max-age=" + +_expireTime * 31104000; break; // 60 * 60 * 24 * 30 * 12
-                                    default: new Error("unknown exception of 'set operation'");
-                                }
-                            } else {
-                                _expires = "; expires=" + expireTimes;
+            var _expires = "";
+            expireTimes = expireTimes === undefined ? defaultConfig.expires : expireTimes;
+            if (expireTimes && expireTimes != 0) {
+                switch (expireTimes.constructor) {
+                    case Number:
+                        if(expireTimes === Infinity || expireTimes === -1) _expires = "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+                        else _expires = "; max-age=" + expireTimes;
+                        break;
+                    case String:
+                        if (/^(?:\d{1,}(y|m|d|h|min|s))$/i.test(expireTimes)) {
+                            // get capture number group
+                            var _expireTime = expireTimes.replace(/^(\d{1,})(?:y|m|d|h|min|s)$/i, "$1");
+                            // get capture type group , to lower case
+                            switch (expireTimes.replace(/^(?:\d{1,})(y|m|d|h|min|s)$/i, "$1").toLowerCase()) {
+                                // Frequency sorting
+                                case 'm':  _expires = "; max-age=" + +_expireTime * 2592000; break; // 60 * 60 * 24 * 30
+                                case 'd':  _expires = "; max-age=" + +_expireTime * 86400; break; // 60 * 60 * 24
+                                case 'h': _expires = "; max-age=" + +_expireTime * 3600; break; // 60 * 60
+                                case 'min':  _expires = "; max-age=" + +_expireTime * 60; break; // 60
+                                case 's': _expires = "; max-age=" + _expireTime; break;
+                                case 'y': _expires = "; max-age=" + +_expireTime * 31104000; break; // 60 * 60 * 24 * 30 * 12
+                                default: new Error("unknown exception of 'set operation'");
                             }
-                            break;
-                        case Date:
-                            _expires = "; expires=" + expireTimes.toUTCString();
-                            break;
-                    }
+                        } else {
+                            _expires = "; expires=" + expireTimes;
+                        }
+                        break;
+                    case Date:
+                        _expires = "; expires=" + expireTimes.toUTCString();
+                        break;
                 }
             }
             document.cookie = encodeURIComponent(key) + "=" + encodeURIComponent(value) + _expires + (domain ? "; domain=" + domain : "") + (path ? "; path=" + path : defaultConfig.path) + (secure ? "; secure" : "");
