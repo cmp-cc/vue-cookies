@@ -162,6 +162,16 @@ this.$cookies.set("token","GH1.1.1689020474.1484362313", Infinity);  // never ex
 // never expire , only -1,Other negative Numbers are invalid
 this.$cookies.set("token","GH1.1.1689020474.1484362313", -1); 
 ```
+
+#### remove cookie
+```
+this.$cookies.set("token",value); // domain.com and *.doamin.com are readable
+this.$cookies.remove("token"); // remove token of domain.com and *.doamin.com 
+
+this.$cookies.set("token", value, null, null, "domain.com"); // only domain.com are readable
+this.$cookies.remove("token", null, "domain.com"); // remove token of domain.com 
+```
+
 #### set other arguments
 ```
 // set path
@@ -172,15 +182,6 @@ this.$cookies.set("use_path_argument","value",null, null, "domain.com");   // de
 
 // set secure
 this.$cookies.set("use_path_argument","value",null, null, null,true);
-```
-
-#### remove cookie
-```
-this.$cookies.set("token",value); // domain.com and *.doamin.com are readable
-this.$cookies.remove("token"); // remove token of domain.com and *.doamin.com 
-
-this.$cookies.set("token", value, null, null, "domain.com"); // only domain.com are readable
-this.$cookies.remove("token", null, "domain.com"); // remove token of domain.com 
 ```
 
 #### other operation
