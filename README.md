@@ -173,6 +173,16 @@ this.$cookies.set("use_path_argument","value",null, null, "domain.com");   // de
 // set secure
 this.$cookies.set("use_path_argument","value",null, null, null,true);
 ```
+
+#### remove  
+```
+this.$cookies.set("token",value); // domain.com and *.doamin.com are readable
+this.$cookies.remove("token"); // remove token of domain.com and *.doamin.com 
+
+this.$cookies.set("token", value, null, null, "domain.com"); // only domain.com are readable
+this.$cookies.remove("token", null, "domain.com"); // remove token of domain.com 
+```
+
 #### other operation
 ```
 // check a cookie exist
@@ -186,6 +196,9 @@ this.$cookies.remove("token");
 
 // get all cookie key names, line shows
 this.$cookies.keys().join("\n"); 
+
+// remove all cookie
+this.$cookies.keys().forEach(cookie => this.$cookies.remove(cookie))
 
 // vue-cookies global
 [this | Vue | window].$cookies.[method] 
