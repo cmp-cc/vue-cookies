@@ -174,7 +174,7 @@ this.$cookies.set("use_path_argument","value",null, null, "domain.com");   // de
 this.$cookies.set("use_path_argument","value",null, null, null,true);
 ```
 
-#### remove  
+#### remove cookie
 ```
 this.$cookies.set("token",value); // domain.com and *.doamin.com are readable
 this.$cookies.remove("token"); // remove token of domain.com and *.doamin.com 
