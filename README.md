@@ -36,7 +36,7 @@ syntax format: **[this | Vue | window].$cookies.[method]**
 
 * Set global config
 ```
-$cookies.config(expireTimes[,path])  // default: expireTimes = 1d , path=/
+$cookies.config(expireTimes[,path[, domain[, secure]]])  // default: expireTimes = 1d, path = '/', domain = '', secure = ''
 ```
 
 * Set a cookie

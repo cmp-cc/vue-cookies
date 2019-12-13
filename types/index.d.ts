@@ -1,13 +1,13 @@
-import Vue from 'vue';
+import _Vue from 'vue';
 import './vue';
 
-export function install(vue: typeof Vue): void;
+export function install(Vue: typeof _Vue): void;
 
-export interface VueCookies {
+export declare interface VueCookies {
   /**
    * Set global config
    */
-  config(expireTimes: string | number | Date, path?: string): void;
+  config(expireTimes: string | number | Date, path?: string, domain?: string, secure?: boolean): void;
 
   /**
    * Set a cookie
@@ -35,6 +35,3 @@ export interface VueCookies {
    */
   keys(): string[];
 }
-
-export declare const VueCookies: VueCookies;
-export default VueCookies

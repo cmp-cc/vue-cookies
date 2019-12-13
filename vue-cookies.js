@@ -10,7 +10,9 @@
 
     var defaultConfig = {
         expires : '1d',
-        path : '; path=/'
+        path : '; path=/',
+        domain:'',
+        secure:'',
     }
 
     var VueCookies = {
@@ -19,12 +21,18 @@
             Vue.prototype.$cookies = this
             Vue.cookies = this
         },
-        config : function(expireTimes,path) {
+        config : function(expireTimes,path,domain,secure) {
             if(expireTimes) {
                 defaultConfig.expires = expireTimes;
             }
             if(path) {
                 defaultConfig.path = '; path=' + path;
+            }
+            if(domain) {
+                defaultConfig.domain = "; domain=" + domain;
+            }
+            if(secure) {
+                defaultConfig.secure = "; secure";
             }
         },
         get: function(key) {
@@ -81,7 +89,7 @@
                         break;
                 }
             }
-            document.cookie = encodeURIComponent(key) + "=" + encodeURIComponent(value) + _expires + (domain ? "; domain=" + domain : "") + (path ? "; path=" + path : defaultConfig.path) + (secure ? "; secure" : "");
+            document.cookie = encodeURIComponent(key) + "=" + encodeURIComponent(value) + _expires + (domain ? "; domain=" + domain : defaultConfig.domain) + (path ? "; path=" + path : defaultConfig.path) + (secure ? "; secure" : defaultConfig.secure);
             return this;
         },
         remove: function(key, path, domain) {
