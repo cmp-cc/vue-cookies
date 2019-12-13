@@ -1,9 +1,9 @@
 import _Vue from 'vue';
 import './vue';
 
-export function install(Vue: typeof _Vue): void;
+export declare function install(Vue: typeof _Vue): void;
 
-export declare interface VueCookies {
+export interface VueCookies {
   /**
    * Set global config
    */
@@ -35,3 +35,7 @@ export declare interface VueCookies {
    */
   keys(): string[];
 }
+
+declare const VueCookies: VueCookies;
+export default VueCookies;
+
