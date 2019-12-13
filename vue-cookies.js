@@ -1,5 +1,5 @@
 /**
- * Vue Cookies v1.5.14
+ * Vue Cookies v1.6.0
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
@@ -19,7 +19,7 @@
         // install of Vue
         install: function(Vue) {
             Vue.prototype.$cookies = this
-            Vue.cookies = this
+            Vue.$cookies = this
         },
         config : function(expireTimes,path,domain,secure) {
             defaultConfig.expires = expireTimes ? expireTimes : '1d';

@@ -7,7 +7,7 @@ A simple Vue.js plugin for handling browser cookies
 ### Browser
 ```
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vue-cookies@1.5.14/vue-cookies.js"></script>
+  <script src="https://unpkg.com/vue-cookies@1.6.0/vue-cookies.js"></script>
 ```
 ### Package Managers
 ```
@@ -23,11 +23,11 @@ import VueCookies from 'vue-cookies'
 Vue.use(VueCookies)
 
 // set default config
-VueCookies.config('7d')
+Vue.$cookies.config('7d')
 
 // set global cookie
-VueCookies.set('theme','default');
-VueCookies.set('hover-time','1s');
+Vue.$cookies.set('theme','default');
+Vue.$cookies.set('hover-time','1s');
 ```
 
 ## Api

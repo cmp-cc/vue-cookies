@@ -36,6 +36,9 @@ export interface VueCookies {
   keys(): string[];
 }
 
-declare const VueCookies: VueCookies;
-export default VueCookies;
+declare const _default : {
+  VueCookies: VueCookies;
+  install: typeof install;
+};
 
+export default _default;
