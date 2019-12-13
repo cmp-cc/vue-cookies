@@ -1,5 +1,5 @@
-    /**
- * Vue Cookies v1.5.13
+/**
+ * Vue Cookies v1.5.14
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
@@ -22,18 +22,10 @@
             Vue.cookies = this
         },
         config : function(expireTimes,path,domain,secure) {
-            if(expireTimes) {
-                defaultConfig.expires = expireTimes;
-            }
-            if(path) {
-                defaultConfig.path = '; path=' + path;
-            }
-            if(domain) {
-                defaultConfig.domain = "; domain=" + domain;
-            }
-            if(secure) {
-                defaultConfig.secure = "; secure";
-            }
+            defaultConfig.expires = expireTimes ? expireTimes : '1d';
+            defaultConfig.path = path ? '; path=' + path : '; path=/';
+            defaultConfig.domain = domain ? '; domain=' + domain : '';
+            defaultConfig.secure = secure ? '; secure' : '';
         },
         get: function(key) {
             var value = decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(key).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null
