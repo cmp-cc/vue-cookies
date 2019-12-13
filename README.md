@@ -72,6 +72,9 @@ this.$cookies.config(new Date(2019,03,13).toUTCString())
 // 30 day after, expire, '' current path , browser default
 this.$cookies.config(60 * 60 * 24 * 30,'');
 
+// set domain / secure
+Vue.$cookies.config('7d','/','',true)
+
 // window object
 window.$cookies.config('30d')
 ```
