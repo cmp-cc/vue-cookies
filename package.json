@@ -13,7 +13,11 @@
   "keywords":[
     "javascript",
     "vue",
-    "cookie"
+    "cookie",
+    "cookies",
+    "vue-cookies",
+    "browser",
+    "session"
   ],
   "author": "cmp-cc",
   "license": "MIT",
