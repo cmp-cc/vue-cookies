@@ -32,7 +32,7 @@ Vue.$cookies.set('hover-time','1s');
 
 ## Api
 
-syntax format: **[this | Vue | window].$cookies.[method]**
+syntax format: **[this | Vue].$cookies.[method]**
 
 * Set global config
 ```
@@ -57,7 +57,7 @@ $cookies.isKey(keyName)  // return false or true
 ```
 * Get All `cookie name`
 ```
-this.$cookies.keys()  // return a array
+$cookies.keys()  // return a array
 ```
 
 ## Example Usage
@@ -65,18 +65,18 @@ this.$cookies.keys()  // return a array
 #### set global config
 ```
 // 30 day after, expire
-this.$cookies.config('30d')
+Vue.$cookies.config('30d')
 
+// set secure, only https works
+Vue.$cookies.config('7d','','',true)
+
+// 2019-03-13 expire
 this.$cookies.config(new Date(2019,03,13).toUTCString())
 
 // 30 day after, expire, '' current path , browser default
 this.$cookies.config(60 * 60 * 24 * 30,'');
 
-// set secure, only https works
-Vue.$cookies.config('7d','','',true)
 
-// window object
-window.$cookies.config('30d')
 ```
 
 #### support json object
@@ -205,25 +205,17 @@ this.$cookies.keys().join("\n");
 this.$cookies.keys().forEach(cookie => this.$cookies.remove(cookie))
 
 // vue-cookies global
-[this | Vue | window].$cookies.[method] 
+[this | Vue].$cookies.[method] 
 
 ```
 
 
 ## Warning
+
 **$cookies key names Cannot be set to ['expires','max-age','path','domain','secure']**
 
 
-## explain
-**vue-cookies no dependencies, It can exist independently, Friendly to vuejs**
-```
-window.$cookies.get
-window.$cookies.set
-window.$cookies.isKey
-window.$cookies.remove
-window.$cookies.keys
-```
-
 ## License
+
 [MIT](http://opensource.org/licenses/MIT)
 Copyright (c) 2016-present, cmp-cc
