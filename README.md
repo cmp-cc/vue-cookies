@@ -7,7 +7,7 @@ A simple Vue.js plugin for handling browser cookies
 ### Browser
 ```
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vue-cookies@1.6.1/vue-cookies.js"></script>
+  <script src="https://unpkg.com/vue-cookies@1.7.1/vue-cookies.js"></script>
 ```
 ### Package Managers
 ```
@@ -36,12 +36,12 @@ syntax format: **[this | Vue].$cookies.[method]**
 
 * Set global config
 ```
-$cookies.config(expireTimes[,path[, domain[, secure]]])  // default: expireTimes = 1d, path = '/', domain = '', secure = ''
+$cookies.config(expireTimes[,path[, domain[, secure[, sameSite]]])  // default: expireTimes = 1d, path = '/', domain = '', secure = '', sameSite = ''
 ```
 
 * Set a cookie
 ```
-$cookies.set(keyName, value[, expireTimes[, path[, domain[, secure]]]])   //return this
+$cookies.set(keyName, value[, expireTimes[, path[, domain[, secure[, sameSite]]]]])   //return this
 ```
 * Get a cookie
 ```
@@ -185,6 +185,9 @@ this.$cookies.set("use_path_argument","value",null, null, "domain.com");   // de
 
 // set secure
 this.$cookies.set("use_path_argument","value",null, null, null,true);
+
+// set sameSite - should be one of `None`, `Strict` or `Lax`. Read more https://web.dev/samesite-cookies-explained/
+this.$cookies.set("use_path_argument","value",null, null, null, null, "Lax");
 ```
 
 #### other operation
@@ -212,7 +215,7 @@ this.$cookies.keys().forEach(cookie => this.$cookies.remove(cookie))
 
 ## Warning
 
-**$cookies key names Cannot be set to ['expires','max-age','path','domain','secure']**
+**$cookies key names Cannot be set to ['expires','max-age','path','domain','secure','SameSite']**
 
 
 ## License

@@ -13,6 +13,7 @@
         path : '; path=/',
         domain:'',
         secure:'',
+        sameSite:''
     }
 
     var VueCookies = {
@@ -21,11 +22,12 @@
             Vue.prototype.$cookies = this
             Vue.$cookies = this
         },
-        config : function(expireTimes,path,domain,secure) {
+        config : function(expireTimes,path,domain,secure,sameSite) {
             defaultConfig.expires = expireTimes ? expireTimes : '1d';
             defaultConfig.path = path ? '; path=' + path : '; path=/';
             defaultConfig.domain = domain ? '; domain=' + domain : '';
-            defaultConfig.secure = secure ? '; secure' : '';
+            defaultConfig.secure = secure ? '; Secure' : '';
+            defaultConfig.sameSite = sameSite ? '; SameSite=' + sameSite : '';
         },
         get: function(key) {
             var value = decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(key).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null
@@ -39,11 +41,11 @@
             }
             return value;
         },
-        set: function(key, value, expireTimes, path, domain, secure) {
+        set: function(key, value, expireTimes, path, domain, secure, sameSite) {
             if (!key) {
-                throw new Error("cookie name is not find in first argument")
-            }else if(/^(?:expires|max\-age|path|domain|secure)$/i.test(key)){
-                throw new Error("cookie key name illegality ,Cannot be set to ['expires','max-age','path','domain','secure']\t","current key name: "+key);
+                throw new Error("Cookie name is not find in first argument.")
+            }else if(/^(?:expires|max\-age|path|domain|secure|SameSite)$/i.test(key)){
+                throw new Error("Cookie key name illegality, Cannot be set to ['expires','max-age','path','domain','secure','SameSite']\t current key name: " + key);
             }
             // support json object
             if(value && value.constructor === Object) {
@@ -81,7 +83,13 @@
                         break;
                 }
             }
-            document.cookie = encodeURIComponent(key) + "=" + encodeURIComponent(value) + _expires + (domain ? "; domain=" + domain : defaultConfig.domain) + (path ? "; path=" + path : defaultConfig.path) + (secure === undefined ? defaultConfig.secure : secure ? "; secure" : "");
+            document.cookie =
+                encodeURIComponent(key) + "=" + encodeURIComponent(value) +
+                _expires +
+                (domain ? "; domain=" + domain : defaultConfig.domain) +
+                (path ? "; path=" + path : defaultConfig.path) +
+                (secure === undefined ? defaultConfig.secure : secure ? "; Secure" : "") +
+                (sameSite === undefined ? defaultConfig.sameSite : (sameSite ? "; SameSite=" + sameSite : ""));
             return this;
         },
         remove: function(key, path, domain) {
