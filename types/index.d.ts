@@ -7,13 +7,13 @@ export interface VueCookies {
   /**
    * Set global config
    */
-  config(expireTimes: string | number | Date, path?: string, domain?: string, secure?: boolean, sameSite?: boolean): void;
+  config(expireTimes: string | number | Date, path?: string, domain?: string, secure?: boolean, sameSite?: string): void;
 
   /**
    * Set a cookie
    */
   set(keyName: string, value: any, expireTimes?: string | number | Date,
-    path?: string, domain?: string, secure?: boolean, sameSite?: boolean): this;
+    path?: string, domain?: string, secure?: boolean, sameSite?: string): this;
 
   /**
    * Get a cookie
