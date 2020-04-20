@@ -21,7 +21,7 @@
         install: function(Vue,options) {
             Vue.prototype.$cookies = this
             Vue.$cookies = this
-            if(defaultConfig) defaultConfig = options
+            if(options) defaultConfig = options
         },
         config : function(expireTimes,path,domain,secure,sameSite) {
             defaultConfig.expires = expireTimes ? expireTimes : '1d';
