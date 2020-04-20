@@ -7,7 +7,7 @@ module.exports = function nuxtVueWaitModule (moduleOptions) {
   this.addPlugin({
     src: resolve(__dirname, './plugin.template.js'),
     fileName: 'vue-cookies.js',
-    options
+    options: options
   })
 
 }
