@@ -5,7 +5,7 @@ export default (obj, inject) => {
     
   // inject options from module
   const pluginOptions = [<%= serialize(options) %>][0] || {}
-  const property = pluginOptions.property || '$cookies'
+  const property = pluginOptions.property || 'cookies'
 
   Vue.use(VueCookies, pluginOptions)
 
