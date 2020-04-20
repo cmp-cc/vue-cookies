@@ -18,9 +18,10 @@
 
     var VueCookies = {
         // install of Vue
-        install: function(Vue,options) {
-            Vue.prototype.$cookies = this
-            Vue.$cookies = this
+        install: function(Vue,options) {            
+            const property = options.property || 'cookies'
+            Vue.prototype['$'+property] = this
+            Vue['$'+property] = this
             if(options) defaultConfig = options
         },
         config : function(expireTimes,path,domain,secure,sameSite) {
