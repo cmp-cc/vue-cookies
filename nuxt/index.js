@@ -2,10 +2,7 @@ const { resolve } = require('path')
 
 module.exports = function nuxtVueWaitModule (moduleOptions) {
 
- const defaults = {
-    alias: 'cookies'
-  }
-  const options = Object.assign({}, defaults, moduleOptions)
+  const options = Object.assign({}, this.options.cookies, moduleOptions)
 
   this.addPlugin({
     src: resolve(__dirname, './plugin.template.js'),
