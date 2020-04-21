@@ -20,7 +20,14 @@ Vue.use(require('vue-cookies'))
 // es2015 module
 import Vue from 'vue'
 import VueCookies from 'vue-cookies'
-Vue.use(VueCookies)
+Vue.use(VueCookies,{
+    property : '$cookies',
+    expires : '1d',
+    path : '/',
+    domain :  '',
+    secure :  '',
+    sameSite :  ''
+})
 
 // set default config
 Vue.$cookies.config('7d')
@@ -211,6 +218,21 @@ this.$cookies.keys().forEach(cookie => this.$cookies.remove(cookie))
 
 ```
 
+## Nuxt Module
+module.exports = {
+  modules: [
+    ['vue-cookies/nuxt']
+  ],
+
+  cookies: {
+    property: '$cookies',
+    expires: '7d',
+    path: '/',
+    domain: '',
+    secure: '',
+    sameSite: ''
+  }
+}
 
 ## Warning
 
