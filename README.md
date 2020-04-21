@@ -219,6 +219,7 @@ this.$cookies.keys().forEach(cookie => this.$cookies.remove(cookie))
 ```
 
 ## Nuxt Module
+```
 module.exports = {
   modules: [
     ['vue-cookies/nuxt']
@@ -233,6 +234,7 @@ module.exports = {
     sameSite: ''
   }
 }
+```
 
 ## Warning
 
