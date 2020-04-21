@@ -11,7 +11,7 @@ export default (ctx, inject) => {
   const instance = Vue.prototype[property]
     
   if (instance) {
-    // ctx[property] = instance
+    ctx[property] = instance    
     inject(property.replace('$',''), instance)
   }
 }
