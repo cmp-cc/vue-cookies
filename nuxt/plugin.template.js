@@ -10,8 +10,8 @@ export default (ctx, inject) => {
   Vue.use(VueCookies, pluginOptions)
   const instance = Vue.prototype[property]
     
-  if (instance) {
+//   if (instance) {
     ctx[property] = instance    
     inject(property.replace('$',''), instance)
-  }
+//   }
 }
