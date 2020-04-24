@@ -1,8 +1,11 @@
 {
   "name": "vue-cookies",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "A simple Vue.js plugin for handling browser cookies",
   "main": "vue-cookies.js",
+  "files": [
+    "nuxt"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

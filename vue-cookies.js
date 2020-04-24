@@ -18,9 +18,21 @@
 
     var VueCookies = {
         // install of Vue
-        install: function(Vue) {
-            Vue.prototype.$cookies = this
-            Vue.$cookies = this
+        install: function(Vue, options) {    
+
+            if(options) {
+                defaultConfig = {
+                    expires :  options.expireTimes ? options.expireTimes : '1d',
+                    path :  options.path ? '; path=' + options.path : '; path=/',
+                    domain :  options.domain ? '; domain=' + options.domain : '',
+                    secure :  options.secure ? '; Secure' : '',
+                    sameSite :  options.sameSite ? '; SameSite=' + options.sameSite : ''
+                }
+            }
+                    
+            const property = options.property || '$cookies'
+            Vue.prototype[property] = this
+            Vue[property] = this
         },
         config : function(expireTimes,path,domain,secure,sameSite) {
             defaultConfig.expires = expireTimes ? expireTimes : '1d';
@@ -42,6 +54,7 @@
             return value;
         },
         set: function(key, value, expireTimes, path, domain, secure, sameSite) {
+            
             if (!key) {
                 throw new Error("Cookie name is not find in first argument.")
             }else if(/^(?:expires|max\-age|path|domain|secure|SameSite)$/i.test(key)){
@@ -83,6 +96,7 @@
                         break;
                 }
             }
+
             document.cookie =
                 encodeURIComponent(key) + "=" + encodeURIComponent(value) +
                 _expires +
@@ -90,6 +104,7 @@
                 (path ? "; path=" + path : defaultConfig.path) +
                 (secure === undefined ? defaultConfig.secure : secure ? "; Secure" : "") +
                 (sameSite === undefined ? defaultConfig.sameSite : (sameSite ? "; SameSite=" + sameSite : ""));
+
             return this;
         },
         remove: function(key, path, domain) {
@@ -122,7 +137,7 @@
         Vue.use(VueCookies);
     }
     // vue-cookies can exist independently,no dependencies library
-    if(typeof window!=="undefined"){
+    if(typeof window!=="undefined"){        
         window.$cookies = VueCookies;
     }
 
