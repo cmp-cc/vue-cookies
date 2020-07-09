@@ -1,5 +1,5 @@
 /**
- * Vue Cookies v1.7.1
+ * Vue Cookies v1.7.2
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
@@ -96,7 +96,7 @@
             if (!key || !this.isKey(key)) {
                 return false;
             }
-            document.cookie = encodeURIComponent(key) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + (domain ? "; domain=" + domain : defaultConfig.domain) + (path ? "; path=" + path : defaultConfig.path) + "; Secure";
+            document.cookie = encodeURIComponent(key) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + (domain ? "; domain=" + domain : defaultConfig.domain) + (path ? "; path=" + path : defaultConfig.path);
             return this;
         },
         isKey: function(key) {
