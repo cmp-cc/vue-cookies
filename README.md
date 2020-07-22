@@ -7,7 +7,7 @@ A simple Vue.js plugin for handling browser cookies
 ### Browser
 ```
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vue-cookies@1.7.2/vue-cookies.js"></script>
+  <script src="https://unpkg.com/vue-cookies@1.7.3/vue-cookies.js"></script>
 ```
 ### Package Managers
 ```
@@ -36,7 +36,7 @@ syntax format: **[this | Vue].$cookies.[method]**
 
 * Set global config
 ```
-$cookies.config(expireTimes[,path[, domain[, secure[, sameSite]]])  // default: expireTimes = 1d, path = '/', domain = '', secure = '', sameSite = ''
+$cookies.config(expireTimes[,path[, domain[, secure[, sameSite]]])  // default: expireTimes = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax'
 ```
 
 * Set a cookie
