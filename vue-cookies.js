@@ -52,7 +52,7 @@
         value = JSON.stringify(value);
       }
       var _expires = '';
-      expireTimes = expireTimes === undefined ? defaultConfig.expires : expireTimes;
+      expireTimes = expireTimes == undefined ? defaultConfig.expires : expireTimes;
       if (expireTimes && expireTimes != 0) {
         switch (expireTimes.constructor) {
           case Number:
@@ -101,8 +101,8 @@
           _expires +
           (domain ? '; domain=' + domain : defaultConfig.domain) +
           (path ? '; path=' + path : defaultConfig.path) +
-          (secure === undefined ? defaultConfig.secure : secure ? '; Secure' : '') +
-          (sameSite === undefined ? defaultConfig.sameSite : (sameSite ? '; SameSite=' + sameSite : ''));
+          (secure == undefined ? defaultConfig.secure : secure ? '; Secure' : '') +
+          (sameSite == undefined ? defaultConfig.sameSite : (sameSite ? '; SameSite=' + sameSite : ''));
       return this;
     },
     remove: function (key, path, domain) {
