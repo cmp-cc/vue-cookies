@@ -43,9 +43,9 @@
     },
     set: function (key, value, expireTimes, path, domain, secure, sameSite) {
       if (!key) {
-        throw new Error('Cookie name is not find in first argument.');
+        throw new Error('Cookie name is not found in the first argument.');
       } else if (/^(?:expires|max\-age|path|domain|secure|SameSite)$/i.test(key)) {
-        throw new Error('Cookie key name illegality, Cannot be set to ["expires","max-age","path","domain","secure","SameSite"]\t current key name: ' + key);
+        throw new Error('Cookie name illegality. Cannot be set to ["expires","max-age","path","domain","secure","SameSite"]\t current key name: ' + key);
       }
       // support json object
       if (value && value.constructor === Object) {
