@@ -13,7 +13,8 @@
     path: '; path=/',
     domain: '',
     secure: '',
-    sameSite: '; SameSite=Lax'
+    sameSite: '; SameSite=Lax',
+    encodeValue: true
   };
 
   var VueCookies = {
@@ -22,15 +23,20 @@
       Vue.prototype.$cookies = this;
       Vue.$cookies = this;
     },
-    config: function (expireTimes, path, domain, secure, sameSite) {
+    config: function (expireTimes, path, domain, secure, sameSite, encodeValue) {
       defaultConfig.expires = expireTimes ? expireTimes : '1d';
       defaultConfig.path = path ? '; path=' + path : '; path=/';
       defaultConfig.domain = domain ? '; domain=' + domain : '';
       defaultConfig.secure = secure ? '; Secure' : '';
       defaultConfig.sameSite = sameSite ? '; SameSite=' + sameSite : '; SameSite=Lax';
+      defaultConfig.encodeValue = encodeValue==undefined ? true : encodeValue;
+    },
+    encodeValue: function (encodeValue) {
+      defaultConfig.encodeValue = encodeValue==undefined ? true : encodeValue;
     },
     get: function (key) {
-      var value = decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null;
+      var value = document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1');
+      value = (defaultConfig.encodeValue ? decodeURIComponent(value) : value) || null;
 
       if (value && value.substring(0, 1) === '{' && value.substring(value.length - 1, value.length) === '}') {
         try {
@@ -97,7 +103,7 @@
         }
       }
       document.cookie =
-          encodeURIComponent(key) + '=' + encodeURIComponent(value) +
+          encodeURIComponent(key) + '=' + defaultConfig.encodeValue ? encodeURIComponent(value) : value +
           _expires +
           (domain ? '; domain=' + domain : defaultConfig.domain) +
           (path ? '; path=' + path : defaultConfig.path) +
