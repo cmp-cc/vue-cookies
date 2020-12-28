@@ -7,13 +7,18 @@ export interface VueCookies {
   /**
    * Set global config
    */
-  config(expireTimes: string | number | Date, path?: string, domain?: string, secure?: boolean, sameSite?: string): void;
+  config(expireTimes: string | number | Date, path?: string, domain?: string, secure?: boolean, sameSite?: string, encodeValue?: boolean): void;
+
+  /**
+   * Set encodeValue
+   */
+  encodeValue(encodeValue?: boolean): void;
 
   /**
    * Set a cookie
    */
   set(keyName: string, value: any, expireTimes?: string | number | Date,
-    path?: string, domain?: string, secure?: boolean, sameSite?: string): this;
+    path?: string, domain?: string, secure?: boolean, sameSite?: string, encode?: boolean): this;
 
   /**
    * Get a cookie
