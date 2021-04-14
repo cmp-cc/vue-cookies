@@ -23,7 +23,7 @@ export interface VueCookies {
   /**
    * Remove a cookie
    */
-  remove(keyName: string, path?: string, domain?: string): this;
+  remove(keyName: string, path?: string, domain?: string): this | false;
 
   /**
    * Exist a cookie name
