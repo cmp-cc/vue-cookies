@@ -6,7 +6,7 @@
  * Released under the MIT license
  */
 
-(function () {
+ (function () {
 
   var defaultConfig = {
     expires: '1d',
@@ -19,7 +19,12 @@
   var VueCookies = {
     // install of Vue
     install: function (Vue) {
-      Vue.prototype.$cookies = this;
+      const isVue2 = Vue.version.charAt(0)=== "2";
+      if (isVue2) {
+        Vue.prototype.$cookies = this;
+      } else {
+        Vue.config.globalProperties.$cookies = this;
+      }
       Vue.$cookies = this;
     },
     config: function (expireTimes, path, domain, secure, sameSite) {
@@ -135,7 +140,7 @@
     define([], function () {
       return VueCookies;
     });
-  } else if (window.Vue) {
+  } else if (window.Vue && window.Vue.use) {
     Vue.use(VueCookies);
   }
   // vue-cookies can exist independently,no dependencies library
