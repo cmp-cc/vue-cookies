@@ -22,18 +22,18 @@
     const app = Vue.createApp({
       data: function () {
         return {
-          welcomeValue: this.$cookies.get("username"),
-          deleteUserText: "Delete Cookie",
-          deleteUserState: "",
+          welcomeValue: this.$cookies.get('username'),
+          deleteUserText: 'Delete Cookie',
+          deleteUserState: '',
         };
       },
       methods: {
         username: function (event) {
           this.welcomeValue = event.target.value;
-          this.$cookies.set("username", this.welcomeValue);
+          this.$cookies.set('username', this.welcomeValue);
         },
         deleteUser: function () {
-          this.$cookies.remove("username");
+          this.$cookies.remove('username');
           this.deleteUserState = "√";
 
           setTimeout(function () {
@@ -42,6 +42,7 @@
         },
       },
     });
-    app.use($cookies).mount("#app");
+
+    app.use($cookies).mount('#app');
   </script>
 </html>

@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
   <script src="../vue-cookies.js"></script>
   <title>Welcome Username</title>
 </head>
 <body>
-  <div id="v-main">
-
+  <div id="app">
     <p v-if="!welcomeValue">
       Please enter your name : <input type="text" @keyup.enter="username">
     </p>
@@ -17,35 +16,33 @@
       <button @click="deleteUser">{{deleteUserText}}</button>
       {{deleteUserState}}
     </p>
-
   </div>
 </body>
 <script>
-
   new Vue({
-    el:'#v-main',
+    el: '#app',
     data: function() {
       return {
         welcomeValue: this.$cookies.get('username'),
-        deleteUserText : 'Delete Cookie',
-        deleteUserState:''
+        deleteUserText: 'Delete Cookie',
+        deleteUserState: '',
       }
     },
     methods: {
-      username : function(event){
+      username: function(event) {
         this.welcomeValue = event.target.value;
-        this.$cookies.set('username', this.welcomeValue)
+        this.$cookies.set('username', this.welcomeValue);
       },
-      deleteUser: function(){
+      deleteUser: function() {
         this.$cookies.remove('username');
-        this.deleteUserState = '√'
+        this.deleteUserState = '√';
 
-        setTimeout(function(){
-          location.reload()
-        }, 0.5 * 1000)
+        setTimeout(function() {
+          location.reload();
+        }, 0.5 * 1000);
       }
     }
-  })
+  });
 
 </script>
 </html>

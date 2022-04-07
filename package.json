@@ -1,6 +1,6 @@
 {
   "name": "vue-cookies",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "description": "A simple Vue.js plugin for handling browser cookies",
   "main": "vue-cookies.js",
   "scripts": {
@@ -17,7 +17,8 @@
     "cookies",
     "vue-cookies",
     "browser",
-    "session"
+    "session",
+    "vue3"
   ],
   "author": "cmp-cc",
   "license": "MIT",
