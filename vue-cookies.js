@@ -19,12 +19,7 @@
   var VueCookies = {
     // install of Vue
     install: function (Vue) {
-      const isVue2 = Vue.version.charAt(0)=== "2";
-      if (isVue2) {
-        Vue.prototype.$cookies = this;
-      } else {
-        Vue.config.globalProperties.$cookies = this;
-      }
+      Vue.prototype ? Vue.prototype.$cookies = this : Vue.config.globalProperties.$cookies = this;
       Vue.$cookies = this;
     },
     config: function (expireTimes, path, domain, secure, sameSite) {
