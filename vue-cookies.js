@@ -6,7 +6,7 @@
  * Released under the MIT license
  */
 
-(function () {
+ (function () {
 
   var defaultConfig = {
     expires: '1d',
@@ -135,7 +135,7 @@
     define([], function () {
       return VueCookies;
     });
-  } else if (window.Vue) {
+  } else if (window.Vue && window.Vue.use) {
     Vue.use(VueCookies);
   }
   // vue-cookies can exist independently,no dependencies library
