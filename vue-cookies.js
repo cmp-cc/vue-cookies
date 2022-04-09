@@ -21,7 +21,10 @@
     install: function (Vue, options) {
       if(options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite)
       if (Vue.prototype) Vue.prototype.$cookies = this;
-      if (Vue.config && Vue.config.globalProperties) Vue.config.globalProperties.$cookies = this;
+      if (Vue.config && Vue.config.globalProperties) {
+        Vue.config.globalProperties.$cookies = this;
+        Vue.provide('$cookies', this);
+      }
       Vue.$cookies = this;
     },
     config: function (expires, path, domain, secure, sameSite) {
