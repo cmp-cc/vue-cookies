@@ -1,7 +1,8 @@
-import _Vue from 'vue';
+// @ts-ignore
+import _Vue, { App } from 'vue';
 import './vue';
 
-export declare function install(Vue: typeof _Vue): void;
+export declare function install(Vue: typeof _Vue | App): void;
 
 export interface VueCookies {
   /**
