@@ -1,5 +1,5 @@
 /**
- * Vue Cookies v1.7.7
+ * Vue Cookies v1.8.0
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
@@ -19,7 +19,7 @@
   var VueCookies = {
     // install of Vue
     install: function (Vue, options) {
-      if(options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite)
+      if(options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite);
       if (Vue.prototype) Vue.prototype.$cookies = this;
       if (Vue.config && Vue.config.globalProperties) {
         Vue.config.globalProperties.$cookies = this;
