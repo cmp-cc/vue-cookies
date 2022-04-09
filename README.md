@@ -28,11 +28,11 @@ Vue.use(VueCookies, { expire: '7d'})
 
 ## Api
 
-vue2 : **[this | Vue].$cookies.[method]**
-
-vue3 :
-- Options API : **this.$cookies.[method]**
-- Composition API: **inject('$cookies').[method]**
+- vue2 :
+    - **[this | Vue].$cookies.[method]**
+- vue3 :
+    - Composition API: **inject('$cookies').[method]**
+    - Options API : **this.$cookies.[method]**
 
 * Set global config
 ```
