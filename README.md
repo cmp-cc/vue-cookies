@@ -20,14 +20,10 @@ Vue.use(require('vue-cookies'))
 // es2015 module
 import Vue from 'vue'
 import VueCookies from 'vue-cookies'
-Vue.use(VueCookies)
 
-// set default config
-Vue.$cookies.config('7d')
+// default options: { expires: '1d', path: '/', domain: '', secure: '', sameSite: 'Lax' }
+Vue.use(VueCookies, { expire: '7d'})
 
-// set global cookie
-Vue.$cookies.set('theme','default');
-Vue.$cookies.set('hover-time','1s');
 ```
 
 ## Api
@@ -36,12 +32,12 @@ syntax format: **[this | Vue].$cookies.[method]**
 
 * Set global config
 ```
-$cookies.config(expireTimes[,path[, domain[, secure[, sameSite]]])  // default: expireTimes = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax'
+$cookies.config(expires[,path[, domain[, secure[, sameSite]]])  // default: expires = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax'
 ```
 
 * Set a cookie
 ```
-$cookies.set(keyName, value[, expireTimes[, path[, domain[, secure[, sameSite]]]]])   //return this
+$cookies.set(keyName, value[, expires[, path[, domain[, secure[, sameSite]]]]])   //return this
 ```
 * Get a cookie
 ```
