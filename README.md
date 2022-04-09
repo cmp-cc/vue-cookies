@@ -49,7 +49,7 @@ $cookies.get(keyName)  // return value
 ```
 * Remove a cookie
 ```
-$cookies.remove(keyName [, path [, domain]])  // return this
+$cookies.remove(keyName [, path [, domain]])  // return false or true
 ```
 * Exist a `cookie name`
 ```
