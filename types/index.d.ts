@@ -2,18 +2,18 @@
 import _Vue, { App } from 'vue';
 import './vue';
 
-export declare function install(Vue: typeof _Vue | App): void;
+export declare function install(Vue: typeof _Vue | App, options?: CookiesConfig): void;
 
 export interface VueCookies {
   /**
    * Set global config
    */
-  config(expireTimes: string | number | Date, path?: string, domain?: string, secure?: boolean, sameSite?: string): void;
+  config(expires: string | number | Date, path?: string, domain?: string, secure?: boolean, sameSite?: string): void;
 
   /**
    * Set a cookie
    */
-  set(keyName: string, value: any, expireTimes?: string | number | Date,
+  set(keyName: string, value: any, expires?: string | number | Date,
     path?: string, domain?: string, secure?: boolean, sameSite?: string): this;
 
   /**
@@ -24,7 +24,7 @@ export interface VueCookies {
   /**
    * Remove a cookie
    */
-  remove(keyName: string, path?: string, domain?: string): this;
+  remove(keyName: string, path?: string, domain?: string): boolean;
 
   /**
    * Exist a cookie name
@@ -35,6 +35,14 @@ export interface VueCookies {
    * Get All cookie name
    */
   keys(): string[];
+}
+
+interface CookiesConfig {
+  expires: string | number | Date;
+  path?: string;
+  domain?: string;
+  secure?: boolean;
+  sameSite?: string;
 }
 
 declare const _default : {

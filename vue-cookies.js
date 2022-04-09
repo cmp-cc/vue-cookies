@@ -1,5 +1,5 @@
 /**
- * Vue Cookies v1.7.6
+ * Vue Cookies v1.7.7
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
@@ -18,13 +18,14 @@
 
   var VueCookies = {
     // install of Vue
-    install: function (Vue) {
+    install: function (Vue, options) {
+      if(options) this.config(options.expires, options.path, options.domain, options.secure, options.secure)
       if (Vue.prototype) Vue.prototype.$cookies = this;
       if (Vue.config && Vue.config.globalProperties) Vue.config.globalProperties.$cookies = this;
       Vue.$cookies = this;
     },
-    config: function (expireTimes, path, domain, secure, sameSite) {
-      defaultConfig.expires = expireTimes ? expireTimes : '1d';
+    config: function (expires, path, domain, secure, sameSite) {
+      defaultConfig.expires = expires ? expires : '1d';
       defaultConfig.path = path ? '; path=' + path : '; path=/';
       defaultConfig.domain = domain ? '; domain=' + domain : '';
       defaultConfig.secure = secure ? '; Secure' : '';
@@ -42,7 +43,7 @@
       }
       return value;
     },
-    set: function (key, value, expireTimes, path, domain, secure, sameSite) {
+    set: function (key, value, expires, path, domain, secure, sameSite) {
       if (!key) {
         throw new Error('Cookie name is not found in the first argument.');
       } else if (/^(?:expires|max\-age|path|domain|secure|SameSite)$/i.test(key)) {
@@ -53,19 +54,19 @@
         value = JSON.stringify(value);
       }
       var _expires = '';
-      expireTimes = expireTimes == undefined ? defaultConfig.expires : expireTimes;
-      if (expireTimes && expireTimes != 0) {
-        switch (expireTimes.constructor) {
+      expires = expires == undefined ? defaultConfig.expires : expires;
+      if (expires && expires != 0) {
+        switch (expires.constructor) {
           case Number:
-            if (expireTimes === Infinity || expireTimes === -1) _expires = '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
-            else _expires = '; max-age=' + expireTimes;
+            if (expires === Infinity || expires === -1) _expires = '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+            else _expires = '; max-age=' + expires;
             break;
           case String:
-            if (/^(?:\d+(y|m|d|h|min|s))$/i.test(expireTimes)) {
+            if (/^(?:\d+(y|m|d|h|min|s))$/i.test(expires)) {
               // get capture number group
-              var _expireTime = expireTimes.replace(/^(\d+)(?:y|m|d|h|min|s)$/i, '$1');
+              var _expireTime = expires.replace(/^(\d+)(?:y|m|d|h|min|s)$/i, '$1');
               // get capture type group , to lower case
-              switch (expireTimes.replace(/^(?:\d+)(y|m|d|h|min|s)$/i, '$1').toLowerCase()) {
+              switch (expires.replace(/^(?:\d+)(y|m|d|h|min|s)$/i, '$1').toLowerCase()) {
                   // Frequency sorting
                 case 'm':
                   _expires = '; max-age=' + +_expireTime * 2592000;
@@ -89,11 +90,11 @@
                   new Error('unknown exception of "set operation"');
               }
             } else {
-              _expires = '; expires=' + expireTimes;
+              _expires = '; expires=' + expires;
             }
             break;
           case Date:
-            _expires = '; expires=' + expireTimes.toUTCString();
+            _expires = '; expires=' + expires.toUTCString();
             break;
         }
       }
@@ -115,7 +116,7 @@
           (domain ? '; domain=' + domain : defaultConfig.domain) +
           (path ? '; path=' + path : defaultConfig.path) +
           '; SameSite=Lax';
-      return this;
+      return true;
     },
     isKey: function (key) {
       return (new RegExp('(?:^|;\\s*)' + encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=')).test(document.cookie);
