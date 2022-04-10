@@ -19,7 +19,7 @@
   var VueCookies = {
     // install of Vue
     install: function (Vue, options) {
-      if(options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite);
+      if (options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite);
       if (Vue.prototype) Vue.prototype.$cookies = this;
       if (Vue.config && Vue.config.globalProperties) {
         Vue.config.globalProperties.$cookies = this;
