@@ -86,7 +86,7 @@ $cookies.keys()  // return a array
 ## Example Usage
 
 #### set global config
-```
+```js
 // 30 day after, expire
 Vue.$cookies.config('30d')
 Vue.$cookies.config({
@@ -109,7 +109,7 @@ this.$cookies.config(60 * 60 * 24 * 30,'');
 ```
 
 #### support json object
-```
+```js
 var user = { id:1, name:'Journal',session:'25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX' };
 this.$cookies.set('user',user);
 // print user name
@@ -122,7 +122,7 @@ console.log(this.$cookies.get('user').name)
 **Following equivalence: 1 day after, expire**
 
 **Support chaining sets together**
-``` javascript
+```js
  // default expire time: 1 day
 this.$cookies.set('user_session','25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX')
         // number + d , ignore case
@@ -137,7 +137,7 @@ this.$cookies.set('user_session','25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX')
 ```
 #### set expire times, input number type
 
-```
+```js
 this.$cookies.set('default_unit_second','input_value',1);            // 1 second after, expire
 this.$cookies.set('default_unit_second','input_value',60 + 30);      // 1 minute 30 second after, expire
 this.$cookies.set('default_unit_second','input_value',60 * 60 * 12); // 12 hour after, expire
@@ -146,7 +146,7 @@ this.$cookies.set('default_unit_second','input_value',60 * 60 * 24 * 30); // 1 m
 
 #### set expire times - end of browser session
 
-```
+```js
 this.$cookies.set('default_unit_second','input_value',0);          // end of session - use 0 or '0'!
 ```
 
@@ -168,7 +168,7 @@ this.$cookies.set('default_unit_second','input_value',0);          // end of ses
 
 **not support the double value**
 
-```javascript
+```js
 this.$cookies.set('token','GH1.1.1689020474.1484362313','60s');  // 60 second after, expire
 this.$cookies.set('token','GH1.1.1689020474.1484362313','30MIN');  // 30 minute after, expire, ignore case
 this.$cookies.set('token','GH1.1.1689020474.1484362313','24d');  // 24 day after, expire
@@ -182,21 +182,21 @@ this.$cookies.set('token','GH1.1.1689020474.1484362313', 'Sat, 13 Mar 2017 12:25
 ```
 
 #### set expire support date
-```
+```js
 var date = new Date;
 date.setDate(date.getDate() + 1);
 this.$cookies.set('token','GH1.1.1689020474.1484362313', date);
 ```
 
 #### set never expire
-```
+```js
 this.$cookies.set('token','GH1.1.1689020474.1484362313', Infinity);  // never expire
 // never expire , only -1,Other negative Numbers are invalid
 this.$cookies.set('token','GH1.1.1689020474.1484362313', -1); 
 ```
 
 #### remove cookie
-```
+```js
 this.$cookies.set('token',value); // domain.com and *.doamin.com are readable
 this.$cookies.remove('token'); // remove token of domain.com and *.doamin.com 
 
@@ -213,7 +213,7 @@ this.$cookies.remove('token', {
 ```
 
 ### remove more cookie
-```
+```js
 this.$cookies.remove(['token1','token2','token3']);
 this.$cookies.remove(['token1','token2','token3'], null, 'domain.com');
 this.$cookies.remove(['token1','token2','token3'], {
@@ -222,7 +222,7 @@ this.$cookies.remove(['token1','token2','token3'], {
 ```
 
 #### set other arguments
-```
+```js
 // set path
 this.$cookies.set('use_path_argument','value','1d','/app');  
 
@@ -252,7 +252,7 @@ this.$cookies.set('use_path_argument','value',{
 ```
 
 #### other operation
-```
+```js
 // check a cookie exist
 this.$cookies.isKey('token')
 
@@ -262,14 +262,14 @@ this.$cookies.get('token');
 // remove a cookie
 this.$cookies.remove('token');
 
+// remove cookie, more
+this.$cookies.remove(['token1','token2'])
+
 // get all cookie key names, line shows
 this.$cookies.keys().join('\n'); 
 
 // remove all cookie
 this.$cookies.keys().forEach(cookie => this.$cookies.remove(cookie))
-
-// vue-cookies global
-[this | Vue].$cookies.[method] 
 
 ```
 
