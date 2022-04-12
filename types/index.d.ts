@@ -24,7 +24,7 @@ export interface VueCookies {
   /**
    * Set a cookie
    */
-  set(keyName: string, value: any, config: CookiesConfig): this;
+  set(keyName: string, value: any, config?: CookiesConfig): this;
 
   /**
    * Get a cookie
@@ -39,7 +39,7 @@ export interface VueCookies {
   /**
    * Remove a cookie or more
    */
-  remove(keyName: string | string[], removeConfig: CookiesRemoveConfig)
+  remove(keyName: string | string[], removeConfig?: CookiesRemoveConfig)
 
   /**
    * Exist a cookie name
