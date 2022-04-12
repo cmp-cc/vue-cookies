@@ -38,8 +38,6 @@ Vue.use(VueCookies, { expire: '7d'})
 ```
 $cookies.config(expires[,path[, domain[, secure[, sameSite]]])  // default: expires = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax'
 
-or
-
 $cookies.config({
   expires: string, // default '1d' 
   path: string, // default '/' 
@@ -52,8 +50,6 @@ $cookies.config({
 * Set a cookie
 ```
 $cookies.set(keyName, value[, expires[, path[, domain[, secure[, sameSite]]]]])   //return this
-
-or
 
 $cookies.set(keyName, value, {
   expires: string, 
@@ -70,8 +66,6 @@ $cookies.get(keyName)  // return value
 * Remove a cookie or more
 ```
 $cookies.remove(...keyName [, path [, domain]])  // return false or true
-
-or
 
 $cookies.remove(...keyName, {
   path: string,
@@ -209,8 +203,6 @@ this.$cookies.remove('token'); // remove token of domain.com and *.doamin.com
 this.$cookies.set('token', value, null, null, 'domain.com'); // only domain.com are readable
 this.$cookies.remove('token', null, 'domain.com'); // remove token of domain.com 
 
-or
-
 this.$cookies.set('token', value, {
   domain: 'domain.com'
 });
@@ -239,13 +231,11 @@ this.$cookies.set('use_path_argument','value', {
   path: '/app'
 });  
 
-
 // set domain
 this.$cookies.set('use_path_argument','value',null, null, 'domain.com');   // default 1 day after,expire
 this.$cookies.set('use_path_argument','value', {
   domain: 'domain.com'
 });
-
 
 // set secure
 this.$cookies.set('use_path_argument','value',null, null, null,true);
