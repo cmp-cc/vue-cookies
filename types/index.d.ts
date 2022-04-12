@@ -8,7 +8,12 @@ export interface VueCookies {
   /**
    * Set global config
    */
-  config(expires: string | number | Date, path?: string, domain?: string, secure?: boolean, sameSite?: string): void;
+  config(expires?: string | number | Date, path?: string, domain?: string, secure?: boolean, sameSite?: string): void;
+
+  /**
+   * Set global config
+   */
+  config(config: CookiesConfig): void;
 
   /**
    * Set a cookie
@@ -17,14 +22,24 @@ export interface VueCookies {
     path?: string, domain?: string, secure?: boolean, sameSite?: string): this;
 
   /**
+   * Set a cookie
+   */
+  set(keyName: string, value: any, config: CookiesConfig): this;
+
+  /**
    * Get a cookie
    */
   get(keyName: string): any;
 
   /**
-   * Remove a cookie
+   * Remove a cookie or more
    */
-  remove(keyName: string, path?: string, domain?: string): boolean;
+  remove(keyName: string | string[], path?: string, domain?: string): boolean;
+
+  /**
+   * Remove a cookie or more
+   */
+  remove(keyName: string | string[], removeConfig: CookiesRemoveConfig)
 
   /**
    * Exist a cookie name
@@ -38,11 +53,16 @@ export interface VueCookies {
 }
 
 interface CookiesConfig {
-  expires: string | number | Date;
+  expires?: string | number | Date;
   path?: string;
   domain?: string;
   secure?: boolean;
   sameSite?: string;
+}
+
+interface CookiesRemoveConfig {
+  path?: string;
+  domain?: string;
 }
 
 declare const _default : {
