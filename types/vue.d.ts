@@ -9,3 +9,9 @@ declare module "vue/types/vue" {
     $cookies: VueCookies;
   }
 }
+
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $cookies: VueCookies
+  }
+}

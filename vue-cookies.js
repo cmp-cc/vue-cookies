@@ -1,5 +1,5 @@
 /**
- * Vue Cookies v1.8.0
+ * Vue Cookies v1.8.1
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
