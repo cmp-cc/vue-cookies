@@ -40,6 +40,7 @@ Vue.use(VueCookies, { expire: '7d'})
        ```
     - Options API : **this.$cookies.[method]**
 
+- ---
 * Set global config
 ```
 $cookies.config(expires[,path[, domain[, secure[, sameSite]]])  // default: expires = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax'
