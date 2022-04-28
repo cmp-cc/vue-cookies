@@ -31,7 +31,13 @@ Vue.use(VueCookies, { expire: '7d'})
 - vue2 :
     - **[this | Vue].$cookies.[method]**
 - vue3 :
-    - Composition API: **inject('$cookies').[method]**
+    - Composition API: **$cookies.[method]**
+       ```
+         // js
+         const $cookies = inject('$cookies');
+         // ts
+         const $cookies = inject<VueCookies>('$cookies'); 
+       ```
     - Options API : **this.$cookies.[method]**
 
 * Set global config
