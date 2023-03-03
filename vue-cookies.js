@@ -53,7 +53,7 @@
         throw new Error('Cookie name illegality. Cannot be set to ["expires","max-age","path","domain","secure","SameSite"]\t current key name: ' + key);
       }
       // support json object
-      if (value && value.constructor === Object) {
+      if (value && typeof value === 'object') {
         value = JSON.stringify(value);
       }
       var _expires = '';
