@@ -43,7 +43,7 @@ Vue.use(VueCookies, { expires: '7d'})
 - ---
 * Set global config
 ```
-$cookies.config(expires[,path[, domain[, secure[, sameSite, [partitioned]]]])  // default: expires = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax'
+$cookies.config(expires[,path[, domain[, secure[, sameSite, [partitioned]]]])  // default: expires = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax', partitioned = ''
 ```
 
 * Set a cookie
@@ -190,10 +190,13 @@ this.$cookies.set("use_path_argument","value","1d","/app");
 this.$cookies.set("use_path_argument","value",null, null, "domain.com");   // default 1 day after,expire
 
 // set secure
-this.$cookies.set("use_path_argument","value",null, null, null,true);
+this.$cookies.set("use_path_argument","value",null, null, null, true);
 
 // set sameSite - should be one of `None`, `Strict` or `Lax`. Read more https://web.dev/samesite-cookies-explained/
 this.$cookies.set("use_path_argument","value",null, null, null, null, "Lax");
+
+// set partitioned
+this.$cookies.set("use_path_argument","value",null, null, null, true, null, true);
 ```
 
 #### other operation
