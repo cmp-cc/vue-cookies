@@ -43,12 +43,12 @@ Vue.use(VueCookies, { expires: '7d'})
 - ---
 * Set global config
 ```
-$cookies.config(expires[,path[, domain[, secure[, sameSite, partitioned]]])  // default: expires = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax'
+$cookies.config(expires[,path[, domain[, secure[, sameSite, [partitioned]]]])  // default: expires = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax'
 ```
 
 * Set a cookie
 ```
-$cookies.set(keyName, value[, expires[, path[, domain[, secure[, sameSite, partitioned]]]]])   //return this
+$cookies.set(keyName, value[, expires[, path[, domain[, secure[, sameSite, [partitioned]]]]]])   //return this
 ```
 * Get a cookie
 ```
