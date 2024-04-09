@@ -21,7 +21,7 @@ Vue.use(require('vue-cookies'))
 import Vue from 'vue'
 import VueCookies from 'vue-cookies'
 
-// default options config: { expires: '1d', path: '/', domain: '', secure: '', sameSite: 'Lax' , chipsFlag: false}
+// default options config: { expires: '1d', path: '/', domain: '', secure: '', sameSite: 'Lax' , partitioned: false}
 Vue.use(VueCookies, { expires: '7d'})
 
 ```
@@ -43,12 +43,12 @@ Vue.use(VueCookies, { expires: '7d'})
 - ---
 * Set global config
 ```
-$cookies.config(expires[,path[, domain[, secure[, sameSite, chipsFlag]]])  // default: expires = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax'
+$cookies.config(expires[,path[, domain[, secure[, sameSite, partitioned]]])  // default: expires = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax'
 ```
 
 * Set a cookie
 ```
-$cookies.set(keyName, value[, expires[, path[, domain[, secure[, sameSite, chipsFlag]]]]])   //return this
+$cookies.set(keyName, value[, expires[, path[, domain[, secure[, sameSite, partitioned]]]]])   //return this
 ```
 * Get a cookie
 ```

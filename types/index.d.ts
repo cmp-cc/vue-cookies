@@ -8,7 +8,7 @@ export interface VueCookies {
   /**
    * Set global config
    */
-  config(expires: string | number | Date, path?: string, domain?: string, secure?: boolean, sameSite?: string, chipsFlag?: boolean): void;
+  config(expires: string | number | Date, path?: string, domain?: string, secure?: boolean, sameSite?: string, partitioned?: boolean): void;
 
   /**
    * Set a cookie
@@ -43,7 +43,7 @@ interface CookiesConfig {
   domain?: string;
   secure?: boolean;
   sameSite?: string;
-  chipsFlag?: boolean;
+  partitioned?: boolean;
 }
 
 declare const _default : {
