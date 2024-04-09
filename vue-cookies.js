@@ -14,13 +14,13 @@
     domain: '',
     secure: '',
     sameSite: '; SameSite=Lax',
-    allowCHIPS : false
+    chipsFlag : false
   };
 
   var VueCookies = {
     // install of Vue
     install: function (Vue, options) {
-      if (options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite, options.allowCHIPS);
+      if (options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite, options.chipsFlag);
       if (Vue.prototype) Vue.prototype.$cookies = this;
       if (Vue.config && Vue.config.globalProperties) {
         Vue.config.globalProperties.$cookies = this;
@@ -28,12 +28,12 @@
       }
       Vue.$cookies = this;
     },
-    config: function (expires, path, domain, secure, sameSite, allowCHIPS) {
+    config: function (expires, path, domain, secure, sameSite, chipsFlag) {
       defaultConfig.expires = expires ? expires : '1d';
       defaultConfig.path = path ? '; path=' + path : '; path=/';
       defaultConfig.domain = domain ? '; domain=' + domain : '';
       defaultConfig.secure = secure ? '; Secure' : '';
-      if(allowCHIPS) {
+      if(chipsFlag) {
         defaultConfig.sameSite = sameSite ? '; SameSite=' + sameSite : '; SameSite=None; Partitioned;';
       } else {
         defaultConfig.sameSite = sameSite ? '; SameSite=' + sameSite : '; SameSite=Lax';
@@ -51,7 +51,7 @@
       }
       return value;
     },
-    set: function (key, value, expires, path, domain, secure, sameSite, allowCHIPS) {
+    set: function (key, value, expires, path, domain, secure, sameSite, chipsFlag) {
       if (!key) {
         throw new Error('Cookie name is not found in the first argument.');
       } else if (/^(?:expires|max\-age|path|domain|secure|SameSite)$/i.test(key)) {
@@ -62,8 +62,8 @@
         value = JSON.stringify(value);
       }
       var _expires = '';
-      expires = expires == undefined ? defaultConfig.expires : expires;
-      if (expires && expires != 0) {
+      expires = expires === undefined ? defaultConfig.expires : expires;
+      if (expires && expires !== 0) {
         switch (expires.constructor) {
           case Number:
             if (expires === Infinity || expires === -1) _expires = '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
@@ -112,8 +112,11 @@
           (domain ? '; domain=' + domain : defaultConfig.domain) +
           (path ? '; path=' + path : defaultConfig.path) +
           (secure === undefined ? defaultConfig.secure : secure ? '; Secure' : '') +
-          allowCHIPS ? '; SameSite=None; Partitioned' :
-          (sameSite === undefined ? defaultConfig.sameSite : (sameSite ? '; SameSite=' + sameSite : ''));
+          (chipsFlag === undefined ? defaultConfig.chipsFlag ? '; SameSite=None; Partitioned' :
+              (sameSite === undefined ? defaultConfig.sameSite : (sameSite ? '; SameSite=' + sameSite : ''))
+          : chipsFlag ? '; SameSite=None; Partitioned' :
+              (sameSite === undefined ? defaultConfig.sameSite : (sameSite ? '; SameSite=' + sameSite : ''))
+          );
       return this;
     },
     remove: function (key, path, domain) {
