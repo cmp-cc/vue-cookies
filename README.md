@@ -7,7 +7,7 @@ A simple Vue.js plugin for handling browser cookies
 ### Browser
 ```
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vue-cookies@1.8.3/vue-cookies.js"></script>
+  <script src="https://unpkg.com/vue-cookies@1.8.4/vue-cookies.js"></script>
 ```
 ### Package Managers
 ```
@@ -21,7 +21,7 @@ Vue.use(require('vue-cookies'))
 import Vue from 'vue'
 import VueCookies from 'vue-cookies'
 
-// default options config: { expires: '1d', path: '/', domain: '', secure: '', sameSite: 'Lax' }
+// default options config: { expires: '1d', path: '/', domain: '', secure: '', sameSite: 'Lax' , allowCHIPS: false}
 Vue.use(VueCookies, { expires: '7d'})
 
 ```
@@ -43,12 +43,12 @@ Vue.use(VueCookies, { expires: '7d'})
 - ---
 * Set global config
 ```
-$cookies.config(expires[,path[, domain[, secure[, sameSite]]])  // default: expires = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax'
+$cookies.config(expires[,path[, domain[, secure[, sameSite, allowCHIPS]]])  // default: expires = 1d, path = '/', domain = '', secure = '', sameSite = 'Lax'
 ```
 
 * Set a cookie
 ```
-$cookies.set(keyName, value[, expires[, path[, domain[, secure[, sameSite]]]]])   //return this
+$cookies.set(keyName, value[, expires[, path[, domain[, secure[, sameSite, allowCHIPS]]]]])   //return this
 ```
 * Get a cookie
 ```

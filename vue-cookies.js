@@ -1,5 +1,5 @@
 /**
- * Vue Cookies v1.8.3
+ * Vue Cookies v1.8.4
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
@@ -13,13 +13,14 @@
     path: '; path=/',
     domain: '',
     secure: '',
-    sameSite: '; SameSite=Lax'
+    sameSite: '; SameSite=Lax',
+    allowCHIPS : false
   };
 
   var VueCookies = {
     // install of Vue
     install: function (Vue, options) {
-      if (options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite);
+      if (options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite, options.allowCHIPS);
       if (Vue.prototype) Vue.prototype.$cookies = this;
       if (Vue.config && Vue.config.globalProperties) {
         Vue.config.globalProperties.$cookies = this;
@@ -27,12 +28,16 @@
       }
       Vue.$cookies = this;
     },
-    config: function (expires, path, domain, secure, sameSite) {
+    config: function (expires, path, domain, secure, sameSite, allowCHIPS) {
       defaultConfig.expires = expires ? expires : '1d';
       defaultConfig.path = path ? '; path=' + path : '; path=/';
       defaultConfig.domain = domain ? '; domain=' + domain : '';
       defaultConfig.secure = secure ? '; Secure' : '';
-      defaultConfig.sameSite = sameSite ? '; SameSite=' + sameSite : '; SameSite=Lax';
+      if(allowCHIPS) {
+        defaultConfig.sameSite = sameSite ? '; SameSite=' + sameSite : '; SameSite=None; Partitioned;';
+      } else {
+        defaultConfig.sameSite = sameSite ? '; SameSite=' + sameSite : '; SameSite=Lax';
+      }
     },
     get: function (key) {
       var value = decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null;
@@ -46,7 +51,7 @@
       }
       return value;
     },
-    set: function (key, value, expires, path, domain, secure, sameSite) {
+    set: function (key, value, expires, path, domain, secure, sameSite, allowCHIPS) {
       if (!key) {
         throw new Error('Cookie name is not found in the first argument.');
       } else if (/^(?:expires|max\-age|path|domain|secure|SameSite)$/i.test(key)) {
@@ -106,8 +111,9 @@
           _expires +
           (domain ? '; domain=' + domain : defaultConfig.domain) +
           (path ? '; path=' + path : defaultConfig.path) +
-          (secure == undefined ? defaultConfig.secure : secure ? '; Secure' : '') +
-          (sameSite == undefined ? defaultConfig.sameSite : (sameSite ? '; SameSite=' + sameSite : ''));
+          (secure === undefined ? defaultConfig.secure : secure ? '; Secure' : '') +
+          allowCHIPS ? '; SameSite=None; Partitioned' :
+          (sameSite === undefined ? defaultConfig.sameSite : (sameSite ? '; SameSite=' + sameSite : ''));
       return this;
     },
     remove: function (key, path, domain) {
