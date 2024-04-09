@@ -14,7 +14,7 @@
     domain: '',
     secure: '',
     sameSite: '; SameSite=Lax',
-    partitioned : false
+    partitioned : ''
   };
 
   var VueCookies = {
@@ -34,7 +34,7 @@
       defaultConfig.domain = domain ? '; domain=' + domain : '';
       defaultConfig.secure = secure ? '; Secure' : '';
       defaultConfig.sameSite = sameSite ? '; SameSite=' + sameSite : '; SameSite=Lax';
-      defaultConfig.partitioned = partitioned === true;
+      defaultConfig.partitioned = partitioned ? '; Partitioned' : '';
     },
     get: function (key) {
       var value = decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null;
@@ -110,8 +110,7 @@
           (path ? '; path=' + path : defaultConfig.path) +
           (secure === undefined ? defaultConfig.secure : secure ? '; Secure' : '') +
           (sameSite === undefined ? defaultConfig.sameSite : (sameSite ? '; SameSite=' + sameSite : '')) +
-          (partitioned === undefined ? defaultConfig.partitioned ? '; SameSite=None; Partitioned' : '' :
-              partitioned ? '; SameSite=None; Partitioned' : '');
+          (partitioned === undefined ? defaultConfig.partitioned : partitioned ? '; Partitioned' : '');
       return this;
     },
     remove: function (key, path, domain) {
