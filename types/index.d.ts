@@ -47,8 +47,7 @@ interface CookiesConfig {
 }
 
 declare const _default : {
-  VueCookies: VueCookies;
   install: typeof install;
-};
+} & VueCookies;
 
 export default _default;
