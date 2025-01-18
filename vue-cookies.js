@@ -1,5 +1,5 @@
 /**
- * Vue Cookies v1.8.5
+ * Vue Cookies v1.8.6
  * https://github.com/cmp-cc/vue-cookies
  *
  * Copyright 2016, cmp-cc
@@ -21,10 +21,13 @@
     // install of Vue
     install: function (Vue, options) {
       if (options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite, options.partitioned);
-      if (Vue.prototype) Vue.prototype.$cookies = this;
-      if (Vue.config && Vue.config.globalProperties) {
+      const isVue3 = Vue.config && Vue.config.globalProperties;
+      if (isVue3) {
         Vue.config.globalProperties.$cookies = this;
-        Vue.provide('$cookies', this);
+        Vue.provide && Vue.provide('$cookies', this);
+      }
+      if (!isVue3 || Vue.prototype) {
+        Vue.prototype.$cookies = this;
       }
       Vue.$cookies = this;
     },
